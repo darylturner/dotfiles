@@ -27,13 +27,24 @@
   (use-package evil-leader
     :ensure t
     :config
-    (evil-leader/set-leader "<SPC>")
-    (evil-leader/set-key "<SPC>" 'helm-M-x)
-    (evil-leader/set-key "t n" 'linum-mode nil)
-    (evil-leader/set-key "g s" 'magit-status)
-    (evil-leader/set-key "p f" 'helm-projectile)
-    (evil-leader/set-key "b f" 'helm-mini)
-    (evil-leader/set-key "f f" 'helm-find-files)
+    (evil-leader/set-leader "<SPC>")                         ;; spacemacs rip-off
+
+    (evil-leader/set-key "<SPC>" 'helm-M-x)                  ;; M-x alternative
+
+    (evil-leader/set-key "t n" 'linum-mode nil)              ;; toggle numbers
+
+    (evil-leader/set-key "g s" 'magit-status)                ;; git status
+
+    (evil-leader/set-key "p f" 'helm-projectile)             ;; project find
+
+    (evil-leader/set-key "b f" 'helm-mini)                   ;; buffer find
+    (evil-leader/set-key "b n" 'evil-next-buffer)            ;; buffer next
+    (evil-leader/set-key "b p" 'evil-previous-buffer)        ;; buffer previous
+
+    (evil-leader/set-key "w |" 'evil-window-vsplit)          ;; window vertical split
+    (evil-leader/set-key "w -" 'evil-window-split)           ;; window horizontal split
+
+    (evil-leader/set-key "f f" 'helm-find-files)             ;; files find
     (global-evil-leader-mode))
   (evil-mode 1)
 
