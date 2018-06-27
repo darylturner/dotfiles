@@ -1,7 +1,7 @@
 (require 'package)
 (setq package-enable-at-startup nil)
 (add-to-list 'package-archives
-             '("melpa" . "https://melpa.org/packages/"))
+	     '("melpa" . "https://melpa.org/packages/"))
 (package-initialize)
 
 ;; Bootstrap `use-package'
@@ -40,6 +40,7 @@
     (evil-leader/set-key "b f" 'helm-mini)                   ;; buffer find
     (evil-leader/set-key "b n" 'evil-next-buffer)            ;; buffer next
     (evil-leader/set-key "b p" 'evil-previous-buffer)        ;; buffer previous
+    (evil-leader/set-key "b r" 'revert-buffer)               ;; buffer revert/reload
 
     (evil-leader/set-key "w |" 'evil-window-vsplit)          ;; window vertical split
     (evil-leader/set-key "w -" 'evil-window-split)           ;; window horizontal split
@@ -67,7 +68,7 @@
     :ensure t
     :bind
     ("M-p" . 'helm-projectile)))
-  
+
 (use-package neotree
   :ensure t
   :config
