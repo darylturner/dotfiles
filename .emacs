@@ -13,6 +13,7 @@
 
 ;; Built-ins
 (electric-pair-mode)
+(global-linum-mode)
 
 ;; Packages
 (use-package evil
@@ -28,6 +29,7 @@
     :config
     (evil-leader/set-leader "<SPC>")
     (evil-leader/set-key "<SPC>" 'helm-M-x)
+    (evil-leader/set-key "t n" 'linum-mode nil)
     (evil-leader/set-key "g s" 'magit-status)
     (evil-leader/set-key "p f" 'helm-projectile)
     (evil-leader/set-key "b f" 'helm-mini)
@@ -81,11 +83,13 @@
 
 ;; Emacs customization. For package configuration use use-package above.
 (add-to-list 'auto-mode-alist '("\\.sls\\'" . yaml-mode))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(linum-format "%d ")
  '(frame-background-mode (quote dark))
  '(menu-bar-mode nil)
  '(package-selected-packages (quote (evil-mode evil use-package))))
@@ -99,4 +103,5 @@
  '(company-tooltip ((t (:background "lightgray" :foreground "black"))))
  '(company-tooltip-common ((((type x)) (:inherit company-tooltip :weight bold)) (t (:inherit company-tooltip))))
  '(company-tooltip-common-selection ((((type x)) (:inherit company-tooltip-selection :weight bold)) (t (:inherit company-tooltip-selection))))
- '(company-tooltip-selection ((t (:background "black" :foreground "lightgray")))))
+ '(company-tooltip-selection ((t (:background "black" :foreground "lightgray"))))
+ '(linum ((t (:foreground "white")))))
