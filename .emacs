@@ -16,6 +16,11 @@
 (global-linum-mode)
 
 ;; Packages
+(use-package diminish
+  :ensure t
+  :config
+  (diminish 'undo-tree-mode))
+
 (use-package evil
   :ensure t
   :config
@@ -61,17 +66,20 @@
 
 (use-package helm
   :ensure t
+  :diminish helm-mode
   :config (helm-mode)
   :bind
   ("M-x" . 'helm-M-x))
 
 (use-package magit
   :ensure t
+  :diminish magit-mode
   :config
   (use-package evil-magit :ensure t :config 'evil-magit))
 
 (use-package projectile
   :ensure t
+  :diminish projectile-mode
   :config
   (projectile-mode)
   (use-package helm-projectile
@@ -83,7 +91,7 @@
   :ensure t
   :config
   (evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-enter)
-  (evil-define-key 'normal neotree-mode-map (kbd "SPC") 'neotree-quick-look)
+  (evil-define-key 'normal neotree-mode-map (kbd "p") 'neotree-quick-look)
   (evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
   (evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter)
   (evil-define-key 'normal neotree-mode-map (kbd "|") 'neotree-enter-vertical-split)
@@ -117,9 +125,9 @@
 
 (use-package which-key
   :ensure t
+  :diminish which-key-mode
   :config
   (which-key-mode))
-
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -127,6 +135,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(frame-background-mode (quote dark))
+ '(inhibit-startup-screen t)
+ '(initial-scratch-message nil)
  '(linum-format "%d ")
  '(menu-bar-mode nil)
  '(package-selected-packages (quote (evil-mode evil use-package))))
