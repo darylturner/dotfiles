@@ -13,13 +13,17 @@
 
 ;; Built-ins
 (electric-pair-mode)
-(global-linum-mode)
+(global-display-line-numbers-mode)
 
 ;; Packages
 (use-package diminish
   :ensure t
   :config
   (diminish 'undo-tree-mode))
+
+(use-package markdown-mode
+  :ensure t
+  :mode (("\\.md\\'" . gfm-mode)))
 
 (use-package evil
   :ensure t
@@ -38,7 +42,8 @@
     (evil-leader/set-key "<SPC>" 'helm-M-x)                  ;; M-x alternative
 
     (which-key-add-key-based-replacements "<SPC> t" "toggle")
-    (evil-leader/set-key "t n" 'linum-mode nil)              ;; toggle numbers
+    (evil-leader/set-key "t n" 'display-line-numbers-mode nil);; toggle numbers
+    (evil-leader/set-key "t f" 'yafolding-toggle-element)    ;; toggle yafold
 
     (which-key-add-key-based-replacements "<SPC> c" "comment")
     (evil-leader/set-key "c l" 'comment-line)                ;; toggle line comment
@@ -54,6 +59,7 @@
     (evil-leader/set-key "b n" 'evil-next-buffer)            ;; buffer next
     (evil-leader/set-key "b p" 'evil-previous-buffer)        ;; buffer previous
     (evil-leader/set-key "b r" 'revert-buffer)               ;; buffer revert/reload
+    (evil-leader/set-key "b k" 'kill-buffer)                 ;; buffer kill
 
     (which-key-add-key-based-replacements "<SPC> w" "window")
     (evil-leader/set-key "w |" 'evil-window-vsplit)          ;; window vertical split
@@ -90,6 +96,7 @@
 (use-package neotree
   :ensure t
   :config
+  (setq projectile-switch-project-action 'neotree-projectile-action)
   (evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-enter)
   (evil-define-key 'normal neotree-mode-map (kbd "p") 'neotree-quick-look)
   (evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
@@ -128,6 +135,9 @@
   :diminish which-key-mode
   :config
   (which-key-mode))
+
+(use-package yafolding
+  :ensure t)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
