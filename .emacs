@@ -27,6 +27,8 @@
 
 (use-package evil
   :ensure t
+  :init
+  (setq evil-want-C-i-jump nil)
   :config
   (define-key evil-normal-state-map (kbd "C-w h") 'evil-window-left)
   (define-key evil-normal-state-map (kbd "C-w j") 'evil-window-down)
@@ -50,6 +52,9 @@
 
     (which-key-add-key-based-replacements "<SPC> g" "git")
     (evil-leader/set-key "g s" 'magit-status)                ;; git status
+    (evil-leader/set-key "g S" 'magit-stage)                 ;; git stage
+    (evil-leader/set-key "g c" 'magit-commit)                ;; git commit
+    (evil-leader/set-key "g p" 'magit-push)                  ;; git push
 
     (which-key-add-key-based-replacements "<SPC> p" "project")
     (evil-leader/set-key "p f" 'helm-projectile)             ;; project find
@@ -70,6 +75,18 @@
     (global-evil-leader-mode))
   (evil-mode 1)
 
+(use-package evil-org
+  :ensure t
+  :after org
+  :config
+  (add-hook 'org-mode-hook 'evil-org-mode)
+  (add-hook 'evil-org-mode-hook
+            (lambda ()
+	      (setf evil-org-key-theme '(navigation insert textobjects todo additional))
+              (evil-org-set-key-theme)))
+  (require 'evil-org-agenda)
+  (evil-org-agenda-set-keys))
+
 (use-package helm
   :ensure t
   :diminish helm-mode
@@ -81,6 +98,7 @@
   :ensure t
   :diminish magit-mode
   :config
+  (remove-hook 'server-switch-hook 'magit-commit-diff)
   (use-package evil-magit :ensure t :config 'evil-magit))
 
 (use-package projectile
@@ -144,12 +162,14 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("c3d4af771cbe0501d5a865656802788a9a0ff9cf10a7df704ec8b8ef69017c68" default)))
  '(frame-background-mode (quote dark))
  '(inhibit-startup-screen t)
  '(initial-scratch-message nil)
- '(linum-format "%d ")
  '(menu-bar-mode nil)
- '(package-selected-packages (quote (evil-mode evil use-package))))
+ '(package-selected-packages (quote (monokai-theme evil-org evil-mode evil use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -161,6 +181,6 @@
  '(company-tooltip-common ((((type x)) (:inherit company-tooltip :weight bold)) (t (:inherit company-tooltip))))
  '(company-tooltip-common-selection ((((type x)) (:inherit company-tooltip-selection :weight bold)) (t (:inherit company-tooltip-selection))))
  '(company-tooltip-selection ((t (:background "black" :foreground "lightgray"))))
- '(linum ((t (:foreground "white"))))
+ '(line-number ((t (:foreground "white"))))
  '(mode-line ((t (:inherit default :foreground "white"))))
  '(mode-line-inactive ((t (:inherit default :foreground "cyan")))))
