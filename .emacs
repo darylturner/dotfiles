@@ -98,7 +98,6 @@
   :ensure t
   :diminish magit-mode
   :config
-  (remove-hook 'server-switch-hook 'magit-commit-diff)
   (use-package evil-magit :ensure t :config 'evil-magit))
 
 (use-package projectile
@@ -167,6 +166,7 @@
     ("c3d4af771cbe0501d5a865656802788a9a0ff9cf10a7df704ec8b8ef69017c68" default)))
  '(frame-background-mode (quote dark))
  '(inhibit-startup-screen t)
+ '(require-final-newline t)
  '(initial-scratch-message nil)
  '(menu-bar-mode nil)
  '(package-selected-packages (quote (monokai-theme evil-org evil-mode evil use-package))))
