@@ -86,6 +86,7 @@
               (evil-org-set-key-theme)))
   (require 'evil-org-agenda)
   (evil-org-agenda-set-keys))
+  (setq org-agenda-files '("~/notes"))
 
 (use-package helm
   :ensure t
@@ -98,7 +99,6 @@
   :ensure t
   :diminish magit-mode
   :config
-  (remove-hook 'server-switch-hook 'magit-commit-diff)
   (use-package evil-magit :ensure t :config 'evil-magit))
 
 (use-package projectile
@@ -169,7 +169,10 @@
  '(inhibit-startup-screen t)
  '(initial-scratch-message nil)
  '(menu-bar-mode nil)
- '(package-selected-packages (quote (monokai-theme evil-org evil-mode evil use-package))))
+ '(package-selected-packages
+   (quote
+    (org-mode monokai-theme evil-org evil-mode evil use-package)))
+ '(require-final-newline t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -183,4 +186,5 @@
  '(company-tooltip-selection ((t (:background "black" :foreground "lightgray"))))
  '(line-number ((t (:foreground "white"))))
  '(mode-line ((t (:inherit default :foreground "white"))))
- '(mode-line-inactive ((t (:inherit default :foreground "cyan")))))
+ '(mode-line-inactive ((t (:inherit default :foreground "cyan"))))
+ '(region ((t (:background "color-241")))))
