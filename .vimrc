@@ -1,42 +1,39 @@
-syntax on
+"standard vim configuration
 set number
+set autoindent
 set expandtab
 set shiftwidth=4
 set tabstop=4
 set mouse=
-set textwidth=0
-set wrapmargin=0
-set wrap
-set linebreak
+set background=dark
+set laststatus=1
+set syntax=on
 
-let mapleader = ","
+"extra extensions to filetypes
+autocmd BufNewFile,BufRead *.sls set filetype=yaml
 
+"map leader key to spacebar
+map <Space> <Leader>
+
+"map escape key to terminal normal mode
+tnoremap <Esc> <C-\><C-n>
+
+"leader key stuff
+"version control
+noremap <Leader>gs :Gstatus<CR>
+"toggles
+noremap <Leader>tn :set invnumber<CR>
+noremap <Leader>tf :set foldmethod=indent<CR>
+
+"colour faffing
 highlight LineNr ctermfg=white
 highlight VertSplit cterm=none gui=none
 
-noremap <C-\> :NERDTreeToggle<CR>
-
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-
-"let g:go_highlight_types = 1
-"let g:go_highlight_fields = 1
-"let g:go_highlight_functions = 1
-"let g:go_highlight_methods = 1
-"let g:go_highlight_operators = 1
-"let g:go_highlight_extra_types = 1
-
-call plug#begin('~/.vim/plugged')
-Plug 'ntpeters/vim-better-whitespace'
-Plug 'sirver/ultisnips'
-Plug 'honza/vim-snippets'
+"third-party plugins
+call plug#begin('~/.local/share/nvim/plugged')
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
-Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/nerdcommenter'
-Plug 'saltstack/salt-vim', { 'for': [ 'sls', 'j2', 'jinja' ] }
-Plug 'ClockworkNet/vim-junos-syntax', { 'for': 'junos' }
+Plug 'justinmk/vim-dirvish'
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'sonph/auto-pairs', { 'for': ['python', 'go'] }
 call plug#end()
