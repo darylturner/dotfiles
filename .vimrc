@@ -10,7 +10,7 @@ set laststatus=1
 set syntax=on
 
 "extra extensions to filetypes
-autocmd BufNewFile,BufRead *.sls set filetype=yaml
+autocmd BufNewFile,BufRead *.sls set filetype=yaml ts=2 sw=2
 
 "map leader key to spacebar
 map <Space> <Leader>
@@ -29,8 +29,14 @@ noremap <Leader>tf :set foldmethod=indent<CR>
 highlight LineNr ctermfg=gray
 highlight VertSplit cterm=none gui=none
 
+"status-line configuration
+let g:airline_powerline_fonts=1
+let g:airline_theme='minimalist'
+
 "third-party plugins
-call plug#begin('~/.local/share/nvim/plugged')
+call plug#begin('~/.vim/plugged')
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'justinmk/vim-dirvish'
