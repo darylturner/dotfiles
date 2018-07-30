@@ -26,7 +26,7 @@ noremap <Leader>tn :set invnumber<CR>
 noremap <Leader>tf :set foldmethod=indent<CR>
 
 "colour faffing
-highlight LineNr ctermfg=white
+highlight LineNr ctermfg=gray
 highlight VertSplit cterm=none gui=none
 
 "third-party plugins
@@ -34,6 +34,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'justinmk/vim-dirvish'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'sonph/auto-pairs', { 'for': ['python', 'go'] }
 call plug#end()
