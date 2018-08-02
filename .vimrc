@@ -7,6 +7,7 @@ set mouse=
 set background=dark
 set laststatus=2
 set syntax=on
+set lazyredraw
 
 "third-party plugins
 call plug#begin('~/.local/share/nvim/plugged')
@@ -53,7 +54,7 @@ noremap <Right> <NOP>
 "colour faffing
 colorscheme nord
 highlight LineNr ctermfg=gray
-highlight StatusLine cterm=none,bold ctermfg=none ctermbg=none
+highlight StatusLine cterm=none ctermfg=none ctermbg=none
 highlight StatusLineNC cterm=none ctermfg=gray ctermbg=none
 highlight EndOfBuffer ctermfg=none ctermbg=none
 highlight VertSplit cterm=none gui=none
