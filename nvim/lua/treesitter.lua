@@ -4,6 +4,7 @@ require'nvim-treesitter.configs'.setup {
   -- ignore_install = { "javascript" }, -- List of parsers to ignore installing
   autopairs = { enable = true },
   incremental_selection = { enable = true },
+  indent = { enable = true },
   highlight = {
     enable = true,              -- false will disable the whole extension
     -- disable = { "yaml" },  -- list of language that will be disabled

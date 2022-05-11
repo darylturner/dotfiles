@@ -9,8 +9,8 @@ vim.keymap.set("n", "<leader>uu", [[:s/./-/g<cr>]])
 vim.keymap.set("n", "<leader>uU", [[:s/./=/g<cr>]])
 
 -- quick comment
-vim.keymap.set("v", "<leader>cc", [[:s/^/#/<cr>]])
-vim.keymap.set("v", "<leader>cd", [[:s/^#//<cr>]])
+vim.keymap.set({"v", "n"}, "<leader>cc", [[:s/^/#/<cr>]])
+vim.keymap.set({"v", "n"}, "<leader>cd", [[:s/^#//<cr>]])
 
 -- telescope keymaps
 vim.keymap.set("n", "<c-p>", require("telescope.builtin").find_files)

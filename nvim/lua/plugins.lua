@@ -1,6 +1,17 @@
 return require("packer").startup(function()
     use "wbthomason/packer.nvim"
 
+    -- completion
+    use "hrsh7th/nvim-cmp"
+    use "hrsh7th/cmp-buffer"
+    use "hrsh7th/cmp-path"
+    use "hrsh7th/cmp-nvim-lua"
+    use "hrsh7th/cmp-nvim-lsp"
+    use "saadparwaiz1/cmp_luasnip" -- for luasnips completion engine
+
+    -- snippets
+    use "l3mon4d3/luasnip"
+
     -- telescope
     use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
     use {
@@ -41,6 +52,9 @@ return require("packer").startup(function()
     -- surround plugin
     use "tpope/vim-surround"
 
+    -- commentary
+    use "tpope/vim-commentary"
+
     -- treesitter
     use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
 
@@ -61,5 +75,32 @@ return require("packer").startup(function()
                 },
             }
         end
+    }
+
+    -- org-ish mode
+    use {
+        "nvim-neorg/neorg",
+        config = function()
+            require('neorg').setup {
+                load = {
+                    ["core.defaults"] = {},
+                    ["core.norg.completion"] = {
+                        config = {
+                            engine = "nvim-cmp",
+                        }
+                    },
+                    -- ["core.gtd.base"] = {},
+                    ["core.norg.dirman"] = {
+                        config = {
+                            workspaces = {
+                                work = "~/notes/work",
+                                home = "~/notes/home",
+                            }
+                        }
+                    },
+                }
+            }
+        end,
+        requires = "nvim-lua/plenary.nvim"
     }
 end)
