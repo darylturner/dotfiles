@@ -8,6 +8,7 @@ vim.opt.ignorecase = true
 vim.opt.incsearch = true
 vim.opt.laststatus = 1
 vim.opt.mouse = ""
+vim.opt.guicursor = ""
 vim.opt.equalalways = false
 vim.opt.hlsearch = false
 vim.opt.number = true
@@ -20,9 +21,9 @@ vim.opt.cursorline = true
 vim.opt.cursorlineopt = "number"
 vim.opt.updatetime = 750
 vim.opt.numberwidth = 4
+vim.opt.foldlevel = 10
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-vim.opt.foldlevel = 10
 vim.opt.signcolumn = "yes:2"
 vim.opt.scrolloff = 3
 vim.opt.sidescrolloff = 3
@@ -39,3 +40,20 @@ vim.opt.fillchars = {
     vert = "|",
 }
 vim.opt.statusline = "%<%f %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%) %P"
+
+-- autocommands
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "norg",
+    callback = function()
+        -- vim.opt.foldmethod = "marker" -- folding now built into norg treesitter
+        vim.opt.foldlevel = 2
+    end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "go",
+    callback = function()
+        vim.opt.shiftwidth = 8
+    end,
+})
+

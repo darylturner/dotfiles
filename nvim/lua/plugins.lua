@@ -98,6 +98,7 @@ return require("packer").startup(function()
                             }
                         }
                     },
+                    -- ["core.norg.concealer"] = {},
                 }
             }
         end,

@@ -22,6 +22,6 @@ vim.keymap.set("n", "<leader>fb", require("telescope.builtin").buffers)
 -- fugitive
 vim.keymap.set("n", "<leader>gs", ":Git<cr>")
 vim.keymap.set("n", "<leader>gP", ":Git push<cr>")
-vim.keymap.set("n", "<leader>gp", ":Git pull<cr>")
+vim.keymap.set("n", "<leader>gp", ":Git pull --commit<cr>")
 vim.keymap.set("n", "<leader>ga", ":Git add %<cr>")
 vim.keymap.set("n", "<leader>gc", ":Git commit<cr>")

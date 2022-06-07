@@ -1,6 +1,8 @@
 local cmp = require "cmp"
 local luasnip = require "luasnip"
 
+require("luasnip.loaders.from_snipmate").lazy_load({ include = {"jinja"} })
+
 cmp.setup {
     snippet = {
         expand = function(args)
