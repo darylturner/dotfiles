@@ -50,6 +50,14 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 
+vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
+    pattern = "*.sls",
+    callback = function()
+        vim.opt.tabstop = 2
+        vim.opt.shiftwidth = 2
+    end
+})
+
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "go",
     callback = function()

@@ -8,6 +8,11 @@ vim.keymap.set({"v", "n"}, "<leader>wt", [[:%s/\s\+$//e<cr>]])
 vim.keymap.set("n", "<leader>uu", [[:s/./-/g<cr>]])
 vim.keymap.set("n", "<leader>uU", [[:s/./=/g<cr>]])
 
+-- tmux
+vim.keymap.set("v", "<leader>ty", [["+y]])
+vim.keymap.set("n", "<leader>tp", [["+p]])
+vim.keymap.set("n", "<leader>tP", [["+P]])
+
 -- quick comment
 vim.keymap.set({"v", "n"}, "<leader>cc", [[:s/^/#/<cr>]])
 vim.keymap.set({"v", "n"}, "<leader>cd", [[:s/^#//<cr>]])
@@ -25,3 +30,4 @@ vim.keymap.set("n", "<leader>gP", ":Git push<cr>")
 vim.keymap.set("n", "<leader>gp", ":Git pull --commit<cr>")
 vim.keymap.set("n", "<leader>ga", ":Git add %<cr>")
 vim.keymap.set("n", "<leader>gc", ":Git commit<cr>")
+vim.keymap.set("n", "<leader>gh", ":Gitsigns preview_hunk<cr>")
