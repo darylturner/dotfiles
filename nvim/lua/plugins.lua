@@ -38,9 +38,9 @@ return require("packer").startup(function()
     use { "arcticicestudio/nord-vim", tag = "develop" }
 
     -- syntax
-    use "glench/vim-jinja2-syntax"
-    use "saltstack/salt-vim"
-    use "clockworknet/vim-junos-syntax"
+    -- use "glench/vim-jinja2-syntax"
+    -- use "saltstack/salt-vim"
+    -- use "clockworknet/vim-junos-syntax"
 
     -- lspconfig
     use "neovim/nvim-lspconfig"
