@@ -53,7 +53,13 @@ return require("packer").startup(function()
     use "tpope/vim-surround"
 
     -- commentary
-    use "tpope/vim-commentary"
+    -- use "tpope/vim-commentary"
+    use {
+        "numtostr/comment.nvim",
+        config = function()
+            require('Comment').setup()
+        end
+    }
 
     -- treesitter
     use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
