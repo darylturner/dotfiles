@@ -22,6 +22,11 @@ return require("packer").startup(function()
         config = function()
             local ts = require("telescope")
             ts.setup {
+                pickers = {
+                    find_files = {
+                        theme = "ivy",
+                    }
+                },
                 extensions = {
                     fzf = {
                         fuzzy = true,                    -- false will only do exact matching
