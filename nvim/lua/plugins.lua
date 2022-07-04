@@ -40,7 +40,7 @@ return require("packer").startup(function()
     }
 
     -- colourschemes
-    use { "arcticicestudio/nord-vim", tag = "develop" }
+    use "arcticicestudio/nord-vim"
 
     -- syntax
     -- use "glench/vim-jinja2-syntax"
