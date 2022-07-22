@@ -1,16 +1,3 @@
--- custom functions
-myfuncs = {
-    toggleSideBar = function(opts)
-        if vim.opt.number._value == true then
-            vim.opt.number = false
-            vim.opt.signcolumn = "no"
-        else
-            vim.opt.number = true
-            vim.opt.signcolumn = "yes:2"
-        end
-    end,
-}
-
 -- remap some builtins
 vim.keymap.set("t", "<esc>", "<c-\\><c-n>")
 
@@ -22,7 +9,7 @@ vim.keymap.set("n", "<leader>uu", [[:s/./-/g<cr>]])
 vim.keymap.set("n", "<leader>uU", [[:s/./=/g<cr>]])
 
 -- toggle side bar
-vim.keymap.set("n", "<leader>n", myfuncs.toggleSideBar)
+vim.keymap.set("n", "<leader>n", require("functions").toggleSideBar)
 
 -- tmux
 vim.keymap.set("v", "<leader>ty", [["+y]])
@@ -45,4 +32,4 @@ vim.keymap.set("n", "<leader>gc", ":Git commit<cr>")
 vim.keymap.set("n", "<leader>gh", ":Gitsigns preview_hunk<cr>")
 
 -- user commands
-vim.api.nvim_create_user_command('ToggleSideBar', myfuncs.toggleSideBar, {})
+vim.api.nvim_create_user_command('ToggleSideBar', require("functions").toggleSideBar, {})
