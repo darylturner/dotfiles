@@ -1,3 +1,16 @@
+-- custom functions
+myfuncs = {
+    toggleSideBar = function(opts)
+        if vim.opt.number._value == true then
+            vim.opt.number = false
+            vim.opt.signcolumn = "no"
+        else
+            vim.opt.number = true
+            vim.opt.signcolumn = "yes:2"
+        end
+    end,
+}
+
 -- remap some builtins
 vim.keymap.set("t", "<esc>", "<c-\\><c-n>")
 
@@ -8,14 +21,13 @@ vim.keymap.set({"v", "n"}, "<leader>wt", [[:%s/\s\+$//e<cr>]])
 vim.keymap.set("n", "<leader>uu", [[:s/./-/g<cr>]])
 vim.keymap.set("n", "<leader>uU", [[:s/./=/g<cr>]])
 
+-- toggle side bar
+vim.keymap.set("n", "<leader>n", myfuncs.toggleSideBar)
+
 -- tmux
 vim.keymap.set("v", "<leader>ty", [["+y]])
 vim.keymap.set("n", "<leader>tp", [["+p]])
 vim.keymap.set("n", "<leader>tP", [["+P]])
-
--- quick comment
-vim.keymap.set({"v", "n"}, "<leader>cc", [[:s/^/#/<cr>]])
-vim.keymap.set({"v", "n"}, "<leader>cd", [[:s/^#//<cr>]])
 
 -- telescope keymaps
 vim.keymap.set("n", "<c-p>", require("telescope.builtin").find_files)
@@ -31,3 +43,6 @@ vim.keymap.set("n", "<leader>gp", ":Git pull --commit<cr>")
 vim.keymap.set("n", "<leader>ga", ":Git add %<cr>")
 vim.keymap.set("n", "<leader>gc", ":Git commit<cr>")
 vim.keymap.set("n", "<leader>gh", ":Gitsigns preview_hunk<cr>")
+
+-- user commands
+vim.api.nvim_create_user_command('ToggleSideBar', myfuncs.toggleSideBar, {})

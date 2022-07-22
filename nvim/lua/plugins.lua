@@ -22,11 +22,11 @@ return require("packer").startup(function()
         config = function()
             local ts = require("telescope")
             ts.setup {
-                pickers = {
+                --[[ pickers = {
                     find_files = {
                         theme = "ivy",
                     }
-                },
+                }, ]]
                 extensions = {
                     fzf = {
                         fuzzy = true,                    -- false will only do exact matching
@@ -53,6 +53,7 @@ return require("packer").startup(function()
     -- git integrations
     use "tpope/vim-fugitive"
     use "tpope/vim-rhubarb"
+    use "shumphrey/fugitive-gitlab.vim"
 
     -- surround plugin
     use "tpope/vim-surround"
@@ -106,8 +107,7 @@ return require("packer").startup(function()
                     ["core.norg.dirman"] = {
                         config = {
                             workspaces = {
-                                work = "~/notes/work",
-                                home = "~/notes/home",
+                                work = "~/notes/",
                             }
                         }
                     },
