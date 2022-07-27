@@ -19,11 +19,12 @@ local on_attach = function(client, bufnr)
   vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, opts)
   vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, opts)
   vim.keymap.set("n", "<leader>lR", vim.lsp.buf.references, opts)
-  vim.keymap.set("n", "<leader>ll", vim.lsp.diagnostic.show_line_diagnostics, opts)
-  vim.keymap.set("n", "<leader>lG", vim.lsp.diagnostic.goto_prev, opts)
-  vim.keymap.set("n", "<leader>lg", vim.lsp.diagnostic.goto_next, opts)
-  vim.keymap.set("n", "<leader>lq", vim.lsp.diagnostic.set_loclist, opts)
-  vim.keymap.set("n", "<leader>lf", vim.lsp.buf.formatting, opts)
+  vim.keymap.set("n", "<leader>lF", vim.diagnostic.open_float, opts)
+  vim.keymap.set("n", "<leader>lG", vim.diagnostic.goto_prev, opts)
+  vim.keymap.set("n", "<leader>lg", vim.diagnostic.goto_next, opts)
+  vim.keymap.set("n", "<leader>lq", vim.diagnostic.setloclist, opts)
+  vim.keymap.set("n", "<leader>lH", vim.diagnostic.hide, opts)
+  vim.keymap.set("n", "<leader>lf", function() vim.lsp.buf.format { async = true } end, opts)
 end
 
 -- Use a loop to conveniently call "setup" on multiple servers and
