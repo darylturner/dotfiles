@@ -22,11 +22,6 @@ return require("packer").startup(function()
         config = function()
             local ts = require("telescope")
             ts.setup {
-                --[[ pickers = {
-                    find_files = {
-                        theme = "ivy",
-                    }
-                }, ]]
                 extensions = {
                     fzf = {
                         fuzzy = true,                    -- false will only do exact matching
@@ -49,6 +44,13 @@ return require("packer").startup(function()
 
     -- lspconfig
     use "neovim/nvim-lspconfig"
+
+    -- dap
+    use "mfussenegger/nvim-dap"
+    use { "leoluz/nvim-dap-go", config = function() require("dap-go").setup() end }
+    use { "rcarriga/nvim-dap-ui", config = function() require("dapui").setup() end }
+    use "nvim-telescope/telescope-dap.nvim"
+    -- use "thehamsta/nvim-dap-virtual-text"
 
     -- git integrations
     use "tpope/vim-fugitive"

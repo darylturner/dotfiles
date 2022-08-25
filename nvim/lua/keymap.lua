@@ -23,6 +23,18 @@ vim.keymap.set("n", "<leader>fo", require("telescope.builtin").oldfiles)
 vim.keymap.set("n", "<leader>fg", require("telescope.builtin").live_grep)
 vim.keymap.set("n", "<leader>fb", require("telescope.builtin").buffers)
 
+-- dap
+vim.keymap.set("n", "<leader>db", require("dap").toggle_breakpoint)
+vim.keymap.set("n", "<leader>dc", function()
+    local cond = vim.fn.input('breakpoint condition: ')
+    require("dap").set_breakpoint(cond)
+end)
+vim.keymap.set("n", "<leader>dd", require("dap").continue)
+vim.keymap.set("n", "<leader>dn", require("dap").step_over)
+vim.keymap.set("n", "<leader>ds", require("dap").step_into)
+vim.keymap.set("n", "<leader>dS", require("dap").step_out)
+vim.keymap.set("n", "<leader>du", require("dapui").toggle)
+
 -- fugitive
 vim.keymap.set("n", "<leader>gs", ":Git<cr>")
 vim.keymap.set("n", "<leader>gP", ":Git push<cr>")
