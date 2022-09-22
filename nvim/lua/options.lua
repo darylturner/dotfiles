@@ -5,6 +5,10 @@ vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 25
 vim.g.netrw_browse_split = 4
 
+-- nord.nvim config
+vim.g.nord_borders = true
+vim.g.nord_disable_background = true
+
 -- misc
 vim.opt.background = "dark"
 vim.opt.expandtab = true
@@ -54,18 +58,18 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 
-vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
-    pattern = "*.sls",
-    callback = function()
-        vim.opt.tabstop = 2
-        vim.opt.shiftwidth = 2
-    end
-})
-
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "go",
     callback = function()
         vim.opt.shiftwidth = 8
+        vim.opt.expandtab = false
+    end,
+})
+
+vim.api.nvim_create_autocmd({"BufWritePre"}, {
+    pattern = "*.go",
+    callback = function()
+        vim.lsp.buf.format()
     end,
 })
 

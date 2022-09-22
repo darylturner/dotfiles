@@ -35,7 +35,8 @@ return require("packer").startup(function()
     }
 
     -- colourschemes
-    use "arcticicestudio/nord-vim"
+    -- use "arcticicestudio/nord-vim"
+    use "shaunsingh/nord.nvim"
 
     -- syntax
     -- use "glench/vim-jinja2-syntax"
@@ -94,29 +95,29 @@ return require("packer").startup(function()
     }
 
     -- org-ish mode
-    use {
-        "nvim-neorg/neorg",
-        config = function()
-            require('neorg').setup {
-                load = {
-                    ["core.defaults"] = {},
-                    ["core.norg.completion"] = {
-                        config = {
-                            engine = "nvim-cmp",
-                        }
-                    },
-                    -- ["core.gtd.base"] = {},
-                    ["core.norg.dirman"] = {
-                        config = {
-                            workspaces = {
-                                work = "~/notes/",
-                            }
-                        }
-                    },
-                    -- ["core.norg.concealer"] = {},
-                }
-            }
-        end,
-        requires = "nvim-lua/plenary.nvim"
-    }
+--    use {
+--        "nvim-neorg/neorg",
+--        config = function()
+--            require('neorg').setup {
+--                load = {
+--                    ["core.defaults"] = {},
+--                    ["core.norg.completion"] = {
+--                        config = {
+--                            engine = "nvim-cmp",
+--                        }
+--                    },
+--                    -- ["core.gtd.base"] = {},
+--                    ["core.norg.dirman"] = {
+--                        config = {
+--                            workspaces = {
+--                                work = "~/notes/",
+--                            }
+--                        }
+--                    },
+--                    -- ["core.norg.concealer"] = {},
+--                }
+--            }
+--        end,
+--        requires = "nvim-lua/plenary.nvim"
+--    }
 end)

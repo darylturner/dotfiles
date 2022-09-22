@@ -12,9 +12,7 @@ vim.keymap.set("n", "<leader>uU", [[:s/./=/g<cr>]])
 vim.keymap.set("n", "<leader>n", require("functions").toggleSideBar)
 
 -- tmux
-vim.keymap.set("v", "<leader>ty", [["+y]])
-vim.keymap.set("n", "<leader>tp", [["+p]])
-vim.keymap.set("n", "<leader>tP", [["+P]])
+vim.keymap.set("v", "<leader>ty", "!tmux load-buffer -<cr>u")
 
 -- telescope keymaps
 vim.keymap.set("n", "<c-p>", require("telescope.builtin").find_files)
