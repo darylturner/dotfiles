@@ -9,6 +9,20 @@ vim.g.netrw_browse_split = 4
 vim.g.nord_borders = true
 vim.g.nord_disable_background = true
 
+
+-- clipboard
+vim.g.clipboard = {
+    name = "macos_tmux",
+    copy = { 
+        ["*"] = {"pbcopy"},
+        ["+"] = {"tmux", "load-buffer", "-"},
+    },
+    paste = { 
+        ["*"] = {"pbpaste"},
+        ["+"] = {"tmux", "paste-buffer", "-p"},
+    },
+}
+
 -- misc
 vim.opt.background = "dark"
 vim.opt.expandtab = true
@@ -20,6 +34,7 @@ vim.opt.guicursor = ""
 vim.opt.equalalways = false
 vim.opt.hlsearch = false
 vim.opt.number = true
+vim.opt.relativenumber = true
 vim.opt.shiftwidth = 4
 vim.opt.smartcase = true
 vim.opt.splitbelow = true
