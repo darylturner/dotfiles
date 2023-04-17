@@ -12,6 +12,14 @@ return require("packer").startup(function()
     -- snippets
     use "l3mon4d3/luasnip"
 
+    -- hardtime
+    use {
+        "takac/vim-hardtime",
+        -- config = function()
+        --     vim.g.hardtime_default_on = 1
+        -- end
+    }
+
     -- telescope
     use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
     use {
@@ -78,10 +86,7 @@ return require("packer").startup(function()
     -- gitsigns
     use {
         "lewis6991/gitsigns.nvim",
-        requires = {
-          "nvim-lua/plenary.nvim"
-        },
-        tag = "release",
+        -- tag = "release",
         config = function()
             require("gitsigns").setup {
                 current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`

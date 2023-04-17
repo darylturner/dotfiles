@@ -33,7 +33,7 @@ end
 -- capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-local servers = { "ansiblels", "yamlls", "pylsp" }
+local servers = { "ansiblels", "yamlls", "pylsp", "clangd" }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup{
     on_attach = on_attach,

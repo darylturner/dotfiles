@@ -1,5 +1,7 @@
 -- global scoped
 vim.g.mapleader = " "
+
+-- netrw
 vim.g.netrw_liststyle = 3
 vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 25
@@ -65,14 +67,6 @@ vim.opt.fillchars = {
 vim.opt.statusline = "%<%f %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%) %P"
 
 -- autocommands
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = "norg",
-    callback = function()
-        -- vim.opt.foldmethod = "marker" -- folding now built into norg treesitter
-        vim.opt.foldlevel = 2
-    end,
-})
-
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "go",
     callback = function()

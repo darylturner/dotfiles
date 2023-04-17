@@ -4,9 +4,12 @@ vim.keymap.set("t", "<esc>", "<c-\\><c-n>")
 -- trim whitespace
 vim.keymap.set({"v", "n"}, "<leader>wt", [[:%s/\s\+$//e<cr>]])
 
+-- quick cd to directory of current file
+vim.keymap.set("n", "<leader>cd", ":cd %:h<cr>")
+
 -- quick underline
-vim.keymap.set("n", "<leader>uu", [[:s/./-/g<cr>]])
-vim.keymap.set("n", "<leader>uU", [[:s/./=/g<cr>]])
+vim.keymap.set("n", "<leader>uu", [[yyp:s/./-/g<cr>]])
+vim.keymap.set("n", "<leader>uU", [[yyp:s/./=/g<cr>]])
 
 -- toggle side bar
 vim.keymap.set("n", "<leader>n", require("functions").toggleSideBar)
@@ -20,6 +23,7 @@ vim.keymap.set("n", "<leader>ff", require("telescope.builtin").find_files)
 vim.keymap.set("n", "<leader>fo", require("telescope.builtin").oldfiles)
 vim.keymap.set("n", "<leader>fg", require("telescope.builtin").live_grep)
 vim.keymap.set("n", "<leader>fb", require("telescope.builtin").buffers)
+vim.keymap.set("n", "<leader>fB", require("telescope.builtin").git_branches)
 vim.keymap.set("n", "<leader>fd", require("telescope.builtin").diagnostics)
 
 -- dap
