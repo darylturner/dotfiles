@@ -24,6 +24,7 @@ vim.g.clipboard = {
 
 -- misc
 vim.opt.background = "dark"
+vim.opt.termguicolors = true
 vim.opt.expandtab = true
 vim.opt.ignorecase = true
 vim.opt.incsearch = true
