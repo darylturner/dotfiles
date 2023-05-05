@@ -14,8 +14,8 @@ vim.opt.rtp:prepend(lazypath)
 
 -- set leader before calling plugins.lua so that keymaps are correct
 vim.g.mapleader = " "
-require("plugins")
 
+require("plugins")
 require("options")
 require("ft")
 require("vim_cmd")

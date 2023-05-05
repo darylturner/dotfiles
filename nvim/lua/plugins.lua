@@ -35,7 +35,22 @@ return require("lazy").setup({
     { "neovim/nvim-lspconfig" },
 
     -- dap
-    { "mfussenegger/nvim-dap", ft = "go" },
+    { 
+        "mfussenegger/nvim-dap",
+        ft = "go",
+        keys = {
+            { "<leader>db", function() require("dap").toggle_breakpoint() end },
+            { "<leader>dc", function()
+                    local cond = vim.fn.input('breakpoint condition: ')
+                    require("dap").set_breakpoint(cond)
+                end
+            },
+            { "<leader>dd", function() require("dap").continue() end },
+            { "<leader>dn", function() require("dap").step_over() end },
+            { "<leader>ds", function() require("dap").step_into() end },
+            { "<leader>dS", function() require("dap").step_out() end },
+        }
+    },
     {
         "leoluz/nvim-dap-go",
         config = function() require("dap-go").setup() end,
@@ -45,6 +60,9 @@ return require("lazy").setup({
         "rcarriga/nvim-dap-ui",
         config = function() require("dapui").setup() end,
         ft = "go",
+        keys = {
+            { "<leader>du", function() require("dapui").toggle() end },
+        }
     },
     { "nvim-telescope/telescope-dap.nvim" },
 
