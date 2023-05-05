@@ -1,32 +1,18 @@
-return require("packer").startup(function()
-    use "wbthomason/packer.nvim"
-
+return require("lazy").setup({
     -- completion
-    use "hrsh7th/nvim-cmp"
-    use "hrsh7th/cmp-buffer"
-    use "hrsh7th/cmp-path"
-    use "hrsh7th/cmp-nvim-lua"
-    use "hrsh7th/cmp-nvim-lsp"
-    use "saadparwaiz1/cmp_luasnip" -- for luasnips completion engine
-
-    -- snippets
-    use "l3mon4d3/luasnip"
-
-    -- hardtime
-    use {
-        "takac/vim-hardtime",
-        -- config = function()
-        --     vim.g.hardtime_default_on = 1
-        -- end
-    }
+    { "hrsh7th/nvim-cmp" },
+    { "hrsh7th/cmp-buffer" },
+    { "hrsh7th/cmp-path" },
+    { "hrsh7th/cmp-nvim-lua" },
+    { "hrsh7th/cmp-nvim-lsp" },
+    { "saadparwaiz1/cmp_luasnip" },
+    { "l3mon4d3/luasnip" },
 
     -- telescope
-    use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
-    use {
+    { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+    {
         "nvim-telescope/telescope.nvim",
-        requires = {
-            "nvim-lua/plenary.nvim",
-        },
+        dependencies = { "nvim-lua/plenary.nvim" },
         config = function()
             local ts = require("telescope")
             ts.setup {
@@ -39,54 +25,57 @@ return require("packer").startup(function()
                 }
             }
             ts.load_extension("fzf")
-        end
-    }
+        end,
+    },
 
     -- colourschemes
-    -- use "arcticicestudio/nord-vim"
-    use "shaunsingh/nord.nvim"
+    { "shaunsingh/nord.nvim", lazy = false, priority = 1000, },
 
-    -- syntax
-    -- use "glench/vim-jinja2-syntax"
-    -- use "saltstack/salt-vim"
-    -- use "clockworknet/vim-junos-syntax"
-
-    -- lspconfig
-    use "neovim/nvim-lspconfig"
+    -- lsp
+    { "neovim/nvim-lspconfig" },
 
     -- dap
-    use "mfussenegger/nvim-dap"
-    use { "leoluz/nvim-dap-go", config = function() require("dap-go").setup() end }
-    use { "rcarriga/nvim-dap-ui", config = function() require("dapui").setup() end }
-    use "nvim-telescope/telescope-dap.nvim"
-    -- use "thehamsta/nvim-dap-virtual-text"
-
-    -- git integrations
-    use "tpope/vim-fugitive"
-    use "tpope/vim-rhubarb"
-    use "shumphrey/fugitive-gitlab.vim"
-
-    -- surround plugin
-    use "tpope/vim-surround"
-
-    -- commentary
-    -- use "tpope/vim-commentary"
-    use {
-        "numtostr/comment.nvim",
-        config = function()
-            require('Comment').setup()
-        end
-    }
+    { 
+        "mfussenegger/nvim-dap",
+        ft = "go",
+        keys = {
+            { "<leader>db", function() require("dap").toggle_breakpoint() end },
+            { "<leader>dc", function()
+                    local cond = vim.fn.input('breakpoint condition: ')
+                    require("dap").set_breakpoint(cond)
+                end
+            },
+            { "<leader>dd", function() require("dap").continue() end },
+            { "<leader>dn", function() require("dap").step_over() end },
+            { "<leader>ds", function() require("dap").step_into() end },
+            { "<leader>dS", function() require("dap").step_out() end },
+        }
+    },
+    {
+        "leoluz/nvim-dap-go",
+        config = function() require("dap-go").setup() end,
+        ft = "go",
+    },
+    {
+        "rcarriga/nvim-dap-ui",
+        config = function() require("dapui").setup() end,
+        ft = "go",
+        keys = {
+            { "<leader>du", function() require("dapui").toggle() end },
+        }
+    },
+    { "nvim-telescope/telescope-dap.nvim" },
 
     -- treesitter
-    use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
-    use { "nvim-treesitter/playground" }
+    { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+    { "nvim-treesitter/playground", cmd = "TSPlaygroundToggle" },
 
-
-    -- gitsigns
-    use {
+    -- git
+    { "tpope/vim-fugitive" },
+    { "tpope/vim-rhubarb" },
+    { "shumphrey/fugitive-gitlab.vim" },
+    {
         "lewis6991/gitsigns.nvim",
-        -- tag = "release",
         config = function()
             require("gitsigns").setup {
                 current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
@@ -97,32 +86,16 @@ return require("packer").startup(function()
                 },
             }
         end
-    }
+    },
 
-    -- org-ish mode
---    use {
---        "nvim-neorg/neorg",
---        config = function()
---            require('neorg').setup {
---                load = {
---                    ["core.defaults"] = {},
---                    ["core.norg.completion"] = {
---                        config = {
---                            engine = "nvim-cmp",
---                        }
---                    },
---                    -- ["core.gtd.base"] = {},
---                    ["core.norg.dirman"] = {
---                        config = {
---                            workspaces = {
---                                work = "~/notes/",
---                            }
---                        }
---                    },
---                    -- ["core.norg.concealer"] = {},
---                }
---            }
---        end,
---        requires = "nvim-lua/plenary.nvim"
---    }
-end)
+    -- commment
+    {
+        "numtostr/comment.nvim",
+        config = function()
+            require('Comment').setup()
+        end
+    },
+
+    -- surround
+    { "tpope/vim-surround" },
+})
